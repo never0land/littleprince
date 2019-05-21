@@ -29,13 +29,16 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e);
-    var from = e.detail.value.from;//始发站
-    var to = e.detail.value.to;//终点
-    var trainDate = e.detail.value.trainDate;//日期
+    var trainNum = "z" + e.detail.value.trainNum;//始发站
+    //var to = e.detail.value.to;//终点
+    var date1 = e.detail.value.date1;//日期:月
+    var date2 = e.detail.value.date2;
+    var trainDate="2019-"+date1+"-"+date2;
+    console.log(trainDate+"日期");
+    console.log(e);
     //var week=e.detail.value.week;
     wx.navigateTo({
-      url: '../trainList/trainList?from=' + from + "&to=" + to + "&trainDate=" + trainDate
-    })
+      url: '../airplaneList/airplaneList?trainNum=' + trainNum + "&trainDate" + trainDate })
   },
   clear_history: function () {
 
