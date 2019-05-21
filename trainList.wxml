@@ -1,0 +1,104 @@
+<!--pages/trainList/trainList.wxml-->
+<view class="date">
+<view>前一天</view>
+<view>{{date}}</view>
+<view>后一天</view>
+</view>
+<!---end----->
+<view class="content" style="height:{{winHeight}}px">
+<block wx:for="{{trainLists}}" wx:key="index">
+<view class="bg">
+<view class="item">
+<view class="wrApper left">
+<view class="normal">{{trainLists[index].fromCity}}</view>
+<view class="blue">{{trainLists[index].fromTime}}</view>
+</view>
+<view class="wrApper center">
+<view class="normal">{{trainLists[index].num}}</view>
+<view class="line"></view>
+<view class="small">{{trainLists[index].usedTime}}</view>
+</view>
+<view class="wrApper right">
+<view class="normal">{{trainLists[index].toCity}}</view>
+<view class="normal">{{trainLists[index].toTime}}</view>
+</view>
+<view class="wrApper right">
+<!----座位大判断，谁删谁去死----->
+    <view wx:if=" {{trainLists[index].ticketInfo.hardsleepermid.price==1}}||{{trainLists[index].ticketInfo.advancedsoftsleeper.price==1}}">
+        <view>
+        {{trainLists[index].ticketInfo.hardsleepermid.price}}
+        <text>起</text>
+        </view>
+   </view>
+   <!---当硬卧和高级软卧同时出现的时候，价格出硬卧的--->
+    <view wx:if=" {{trainLists[index].ticketInfo.hardsleepermid.price==1}}||{{trainLists[index].ticketInfo.softsleeperdown.price==1}}">
+        <view>
+        {{trainLists[index].ticketInfo.hardsleepermid.price}}
+   
+        </view>
+   </view>
+<!-----当硬卧和软卧同时存在时，价格出硬卧的----------->
+    <view wx:elif=" {{trainLists[index].ticketInfo.softsleeperdown.price==1}}||{{trainLists[index].ticketInfo.advancedsoftsleeper.price==1}}">
+        <view>
+        {{trainLists[index].ticketInfo.softsleeperdown.price}}
+ 
+        </view>
+   </view>
+   <!---当软卧和高级软卧同时出现的时候，价格出软卧的--->
+    <view wx:elif=" {{trainLists[index].ticketInfo.hardsleepermid.price==1}}||{{trainLists[index].ticketInfo.softsleeperdown.price==1}}">
+        <view>
+        {{trainLists[index].ticketInfo.hardsleepermid.price}}
+        </view>
+   </view>
+<!-----当硬卧和软卧同时存在时，价格出硬卧的----------->
+          <view wx:elif="{{trainLists[index].ticketInfo.secondseat.price==1}}||trainLists[index].ticketInfo.noseat.price==1">
+   <view>{{trainLists[index].ticketInfo.secondseat.price}}</view>
+   </view>
+   <!---当无座的和二等同时存在时，价格出二等的------------->
+
+
+
+
+
+
+
+
+
+
+
+ </view>
+ <!---判断最低价拿哪个属性---->
+
+<view class="buy">可抢票</view>
+</view>
+</view>
+<view class="hr"></view>
+<view class="seat">
+<view class="yes">
+二等座:100张
+</view>
+<view class="yes">
+一等座:20张
+</view>
+
+<view class="yes">
+商务座:20张
+</view>
+</view>
+
+</block>
+<view class="bottomNav">
+<view id="0" class="{{currentTab==0?'selected':'common'}}"bindtap="switchNav">筛选</view>
+<view style="color:#fff">|</view>
+<view id="1" class="{{currentTab==1?'selected':'common'}}"bindtap="switchNav">出发时间</view>
+<view style="color:#fff">|</view>
+<view id="2" class="{{currentTab==0?'selected':'common'}}"bindtap="switchNav">旅途时间</view>
+<view style="color:#fff">|</view>
+<view id="3" class="{{currentTab==1?'selected':'common'}}"bindtap="switchNav">显示价格</view>
+<view style="color:#fff">|</view>
+ </view>
+</view>
+
+
+
+

@@ -1,0 +1,66 @@
+<view class="haibao">
+  <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duration}}" style="height:155px;">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}"style="width:100%;height:155px;"></image>
+        </swiper-item>
+      </block>  
+  </swiper>
+</view>
+<!----图片轮播----->
+<view class="content">
+      <view class="navbg">
+        <view id="0" class="select" bindtap="switchNav">火车票车次查询</view>
+      </view>
+</view>   
+<!-----标题------->
+<view class="formbg">
+  <form bindsubmit="formSubmit">
+        <view class="station">
+              <view>
+                <input name="from" type="number"placeholder='查询车号'/>
+              </view>
+        </view>
+        <view style='margin-left：280px;width:110px;padding:10px;'>查询日期</view>
+        <view class="hr"></view>
+        <view class="station">
+        <view>
+            <input name="form"type="number"value="06"/>
+        </view>
+        <view>
+              <button>月</button>
+          </view>
+        <view>
+            <input name="to"type="number" value='02'/>
+        </view>
+        <view>
+            <button>日</button>
+        </view>
+     </view>
+<!-----title2-------->
+<view class="hr"></view>
+    <view class="type">
+        <view>高铁动车
+              <switch name="gt" type='switch'/></view>
+              <view>学生票<switch name="xs" type="switch"/></view>
+        </view>
+        <button class="btn" formType="formSubmit">查询</button>
+        <view class="record">
+              <view></view>
+              <view>清除历史</view>
+</view>
+</form>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
