@@ -1,39 +1,15 @@
 <!--pages/trainList/trainList.wxml-->
 <view class="content" style="height:{{winHeight}}px">
-<view>车站</view>
-<view>出发时间</view>
-<view>抵达时间</view>
+<view><label style='margin-left:40px;'>车站</label><label style='margin-left:60px;'>抵达</label><label style='margin-left:60px;'>出发</label></view>
 </view>
-
 <view class="content" style="height:{{winHeight}}px">
-   <block wx:for="{{airplanLists.context}}" wx:key="index">
-   <view ckass="bg">
-    <view class="item">
-      <view class="wrapper left">
-        <view class="normal">{{airplaneLists.context[1][1]}}</view>
-       </view>
-       <view class="wrapper center">
-       <view class="blue">{{airplaneLists[index].beginTime}}</view>
-       <view class="normal">{{airplaneLists[index].num}}</view>
-       <view class="line"></view>
-       <view class="small">{{trainLists[index].usedTime}}</view>
-       </view>
-       <view class="wrapper right">
-       <view class="normal">{{trainLists[index].toCity}}</view>
-       <view class="normal">{{trainLists[index].toTime}}</view>
-       </view>
-       <view class="warpper right">
-       <view class="blue">{{trainLists[index].ticketInfo.hardseat.price}}</view>
-      <view class="buy">可抢票</view> 
-       </view>
-       </view>
-       <view class="hr"></view>
-       <view class="seat">
-       <view class="yes">二等座<text>抢</text></view>
-       <view class="yes">一等座<text>抢</text></view>
-       <view class="no">商务座<text>抢</text></view>
-       </view>
+   <block wx:for="{{airplaneLists}}"wx:key="index">
+    <view class="station">
+            <label style='margin-left:8%;'>{{airplaneLists[index][1]}}</label> 
+            <label style='margin-left:21%;'>{{airplaneLists[index][3]}}</label> 
+            <label style='margin-left:15%;'>{{airplaneLists[index][4]}}</label> 
     </view>
+     <view style="height:20px;width:100%;"></view>
 </block>
 </view>
 
